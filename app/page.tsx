@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-type TimingKey = "morning" | "noon" | "evening" | "bedtime";
+type TimingKey = "morning_before" | "morning_after" | "noon_before" | "evening_before" | "evening_after";
 
 type Medicine = {
   id: string;
@@ -21,12 +21,12 @@ type DailyChecks = {
 };
 
 const TIMING_LABELS: { key: TimingKey; label: string; icon: string; time: string }[] = [
-  { key: "morning", label: "朝", icon: "🌅", time: "起床後" },
-  { key: "noon", label: "昼", icon: "☀️", time: "昼食後" },
-  { key: "evening", label: "夕", icon: "🌆", time: "夕食後" },
-  { key: "bedtime", label: "寝る前", icon: "🌙", time: "就寝前" },
-];
-
+ { key: "morning_before" as TimingKey, label: "朝食前", icon: "🌅", time: "朝食前" },
+  { key: "morning_after" as TimingKey, label: "朝食後", icon: "🌄", time: "朝食後" },
+  { key: "noon_before" as TimingKey, label: "昼食前", icon: "☀️", time: "昼食前" },
+  { key: "evening_before" as TimingKey, label: "夕食前", icon: "🌆", time: "夕食前" },
+  { key: "evening_after" as TimingKey, label: "夕食後", icon: "🌇", time: "夕食後" },
+  ];
 const MEDICINE_COLORS = [
   "#FF6B6B", "#FF9F43", "#FECA57", "#48DBB4",
   "#54A0FF", "#A29BFE", "#FD79A8", "#636E72",
@@ -216,7 +216,7 @@ export default function MedicineApp() {
                     const selected = newTimings.includes(key);
                     return (
                       <button key={key} onClick={() => toggleTiming(key)} style={{ padding: "10px", border: `2px solid ${selected ? "#667eea" : "#eee"}`, borderRadius: 10, background: selected ? "#EEF2FF" : "white", cursor: "pointer", fontSize: 14, fontWeight: selected ? 600 : 400, color: selected ? "#667eea" : "#888", transition: "all 0.2s" }}>
-                        {icon} {key === "morning" ? "朝" : key === "noon" ? "昼" : key === "evening" ? "夕" : "寝る前"}
+                        {icon} {label}
                       </button>
                     );
                   })}
