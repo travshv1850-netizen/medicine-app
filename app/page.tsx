@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-type TimingKey = "morning_before" | "morning_after" | "noon_before" | "evening_before" | "evening_after";
+type TimingKey = "morning_before" | "morning_after" | "noon_before" | "noon_after" | "evening_before" | "evening_after";
 
 type Medicine = {
   id: string;
@@ -24,6 +24,7 @@ const TIMING_LABELS: { key: TimingKey; label: string; icon: string; time: string
  { key: "morning_before" as TimingKey, label: "朝食前", icon: "🌅", time: "朝食前" },
   { key: "morning_after" as TimingKey, label: "朝食後", icon: "🌄", time: "朝食後" },
   { key: "noon_before" as TimingKey, label: "昼食前", icon: "☀️", time: "昼食前" },
+  { key: "noon_after" as TimingKey, label: "昼食後", icon: "🌤️", time: "昼食後" },
   { key: "evening_before" as TimingKey, label: "夕食前", icon: "🌆", time: "夕食前" },
   { key: "evening_after" as TimingKey, label: "夕食後", icon: "🌇", time: "夕食後" },
   ];
